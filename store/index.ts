@@ -15,12 +15,14 @@ export { initialState }
 
 const sagaMiddleware = createSagaMiddleware()
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const config = {
-  debug: true,
+  debug: !isProduction,
 }
 
 const bindMiddleware = (middleware: Middleware<any, any, any>[] = []) => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (!isProduction) {
     const logger = createLogger()
     middleware.push(logger)
     return composeWithDevTools(applyMiddleware(...middleware))
