@@ -1,14 +1,17 @@
-import App, { AppContext, AppInitialProps, AppProps } from 'next/app'
+import App from 'next/app'
+import type { AppContext, AppInitialProps, AppProps } from 'next/app'
 import Head from 'next/head'
 import { generateTitle } from '@/utils'
-import { KovaPage, PageProps } from '@/lib/page'
-import { wrapper } from '@/store'
-import React from 'react'
-import { END } from 'redux-saga'
+import type { KovaPage, PageProps } from '@/lib/page'
+// import { wrapper } from '@/store'
+import { Fragment } from 'react'
+// import { END } from 'redux-saga'
 import { checkAuth } from '@/lib/auth'
 import '@/assets/styles/index.less'
 
-interface KovaAppProps extends AppInitialProps, AppProps {}
+interface KovaAppProps extends AppInitialProps, AppProps {
+  Component: KovaPage<PageProps>
+}
 
 if (typeof window !== 'undefined') {
   console.log(
@@ -18,34 +21,31 @@ if (typeof window !== 'undefined') {
   )
 }
 
-const getInitialProps = async ({ Component, ctx }: AppContext) => {
-  const req = ctx.req
-  if (req) await checkAuth(req)
-
-  const pageProps = Component.getInitialProps
-    ? await Component.getInitialProps(ctx)
-    : Component.defaultProps || {}
-  if (req) {
-    ctx.store.dispatch(END)
-  }
-
-  return {
-    pageProps,
-  }
-}
-
 class KovaApp extends App<KovaAppProps> {
-  static getInitialProps = getInitialProps
+  static getInitialProps = async ({ Component, ctx }: AppContext) => {
+    const req = ctx.req
+    if (req) await checkAuth(req)
+
+    const pageProps = Component.getInitialProps
+      ? await Component.getInitialProps(ctx)
+      : Component.defaultProps || {}
+    // if (req) {
+    //   ctx.store.dispatch(END)
+    // }
+
+    return {
+      pageProps,
+    }
+  }
 
   componentDidMount() {
     //
   }
 
   render() {
-    const { pageProps } = this.props
-    const Component = this.props.Component as KovaPage<PageProps>
+    const { pageProps, Component } = this.props
     const { title, description } = pageProps
-    const Layout = Component.layoutProps?.Layout || React.Fragment
+    const Layout = Component.layoutProps?.Layout || Fragment
     const layoutProps = Component.layoutProps?.Layout ? { layoutProps: Component.layoutProps } : {}
     // const meta = Component.layoutProps?.meta || {}
 
@@ -65,8 +65,10 @@ class KovaApp extends App<KovaAppProps> {
   }
 }
 
-const WrappedApp: any = wrapper.withRedux(KovaApp)
+// const WrappedApp: any = wrapper.withRedux(KovaApp)
 
-WrappedApp.origGetInitialProps = WrappedApp.getInitialProps
+// WrappedApp.origGetInitialProps = WrappedApp.getInitialProps
+KovaApp.origGetInitialProps = KovaApp.getInitialProps
 
-export default WrappedApp
+// export default WrappedApp
+export default KovaApp
