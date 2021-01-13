@@ -9,6 +9,10 @@
     "start": "next start",
     "type-check": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kova-js/kova.git"
+  },
   "dependencies": {
     "antd": "^4.10.2",
     "axios": "^0.21.1",
@@ -23,6 +27,7 @@
     "react-dom": "^16.12.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.3"
   },
   "devDependencies": {

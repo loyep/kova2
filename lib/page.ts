@@ -35,4 +35,4 @@ export interface PageWithLayout {
   layoutProps?: PageLayoutProps
 }
 
-export type KovaPage<P, IP = P> = NextPage<P, IP> & PageWithLayout
+export type KovaPage<P = {}, IP = P> = NextPage<P, IP> & PageWithLayout

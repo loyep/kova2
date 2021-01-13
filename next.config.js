@@ -1,16 +1,12 @@
 /* eslint-disable */
 const fs = require("fs")
 const path = require("path")
-
+const lessToJS = require("less-vars-to-js")
+const withAntd = require("./build/with-antd")
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 })
-
-const lessToJS = require("less-vars-to-js")
-
-const withAntd = require("./build/with-antd")
-
-const antdVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, "./assets/styles/antd-custom.less"), "utf8"))
+const antdVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, "./styles/antd.less"), "utf8"))
 
 module.exports = withBundleAnalyzer(
   withAntd({
@@ -19,13 +15,15 @@ module.exports = withBundleAnalyzer(
     cssLoaderOptions: {
       sourceMap: false,
       importLoaders: 1,
+      camelCase: true,
       localIdentName: "[local]_[hash:4]",
     },
-    webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        "@": path.join(__dirname, "src"),
-      }
+    webpack: (config, {
+      buildId,
+      dev,
+      isServer,
+      defaultLoaders
+    }) => {
       return config
     },
     lessLoaderOptions: {
