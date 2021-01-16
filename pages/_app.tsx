@@ -6,7 +6,6 @@ import { generateTitle } from '@/utils'
 import type { KovaPage } from '@/components/Kova'
 import { wrapper } from '@/store'
 import { Fragment } from 'react'
-import { END } from 'redux-saga'
 import { checkAuth } from '@/lib/auth'
 import zhCN from 'antd/lib/locale/zh_CN'
 import { ConfigProvider } from 'antd'
@@ -26,9 +25,6 @@ class KovaApp extends App<KovaAppProps> {
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
       : Component.defaultProps || {}
-    if (req) {
-      ctx.store.dispatch(END)
-    }
 
     return {
       pageProps,

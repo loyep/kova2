@@ -1,12 +1,10 @@
 import { AuthState } from './types'
-import { AnyAction, Action } from 'redux'
+import { AnyAction } from 'redux'
 
 interface Action_INIT_AUTH {
   type: ActionTypes.INIT_AUTH
   payload: AuthState | null | {}
 }
-
-export type SagaAction = Action<any>
 
 export type Actions = Action_INIT_AUTH | AnyAction
 

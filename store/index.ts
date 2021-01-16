@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, Middleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
 import { MakeStore, createWrapper, Context } from 'next-redux-wrapper'
 import { reducer, initialState } from './reducer'
 import { RootState } from './types'
@@ -7,19 +6,12 @@ import { Reducer } from 'react'
 import { AppContext } from 'next/app'
 import { Actions } from './actions'
 import { requestMiddleware } from '@/utils/fetch'
-import rootSaga from './saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createLogger } from 'redux-logger'
-
 export { initialState }
 
-const sagaMiddleware = createSagaMiddleware()
-
 const isProduction = process.env.NODE_ENV === 'production'
-
-const config = {
-  debug: !isProduction,
-}
+const config = { debug: !isProduction }
 
 const bindMiddleware = (middleware: Middleware<any, any, any>[] = []) => {
   if (!isProduction) {
@@ -30,8 +22,9 @@ const bindMiddleware = (middleware: Middleware<any, any, any>[] = []) => {
   return applyMiddleware(...middleware)
 }
 
-const makeConfiguredStore = (reducer: Reducer<any, any>) =>
-  createStore(reducer, initialState, bindMiddleware([sagaMiddleware]))
+const makeConfiguredStore = (reducer: Reducer<any, any>) => {
+  return createStore(reducer, initialState, bindMiddleware([]))
+}
 
 export const makeStore: MakeStore<RootState> = (context: Context) => {
   const store = makeConfiguredStore(reducer)
@@ -39,7 +32,6 @@ export const makeStore: MakeStore<RootState> = (context: Context) => {
     const { req, res } = (<AppContext>context).ctx || {}
     if (req && res) requestMiddleware(req, res)
   }
-  store.sagaTask = sagaMiddleware.run(rootSaga)
   return store
 }
 
