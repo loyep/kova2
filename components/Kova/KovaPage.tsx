@@ -7,10 +7,6 @@ import { FC, HTMLAttributes, ReactNode } from 'react'
 //   initialState?: any
 // }
 
-export interface GetLayoutResultProps extends HTMLAttributes<HTMLElement> {
-  hasSider?: boolean
-}
-
 interface PageLayoutProps {
   Layout?: FC<{ children: ReactNode } & { [key: string]: any }>
   meta?: { [key: string]: any }
