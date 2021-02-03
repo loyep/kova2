@@ -8,7 +8,7 @@ import { AuthState, RootState } from '@/store/types'
 import { updateAuth } from '@/store/actions'
 import { bindActionCreators } from 'redux'
 import { EditOutlined, ProfileOutlined, SettingOutlined, PoweroffOutlined } from '@ant-design/icons'
-import style from './index.less'
+import style from './default.less'
 
 type AvatarProps = {
   user: AuthState
@@ -18,7 +18,6 @@ type AvatarProps = {
 const Avatar: FC<AvatarProps> = (props: AvatarProps) => {
   const router = useRouter()
   const { user } = props
-  console.log('user', user)
 
   const goLogin = () => {
     router.push({

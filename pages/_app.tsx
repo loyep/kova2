@@ -41,6 +41,7 @@ class KovaApp extends App<KovaAppProps> {
     return (
       <>
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>{generateTitle(title)}</title>
           {description && <meta name="description" content={description} />}
         </Head>

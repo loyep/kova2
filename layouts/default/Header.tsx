@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import React, { FC, useState, useEffect, HTMLAttributes, ReactNode } from 'react'
 import { Layout, Tooltip, Menu, Spin } from 'antd'
 import { HistoryOutlined, SearchOutlined } from '@ant-design/icons'
-import style from './index.less'
+import style from './default.less'
 import cls from 'classnames'
 
 const Avatar = dynamic(() => import('./Avatar'), {
@@ -41,7 +41,7 @@ const Header: FC<HeaderProps> = (props) => {
     return (
       <Menu className={'headerMenu'} mode="horizontal">
         {menus.map((menu) => (
-          <Menu.Item>
+          <Menu.Item key={menu.url}>
             <Link href={menu.url}>{menu.title}</Link>
           </Menu.Item>
         ))}
@@ -95,7 +95,7 @@ const Header: FC<HeaderProps> = (props) => {
             </div>
           </div>
         </div>
-        <div className={cls('headerNav', 'left')}>{renderMenus}</div>
+        <div className={cls('headerNav', 'left')}>{renderMenus()}</div>
       </div>
     </Layout.Header>
   )

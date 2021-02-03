@@ -12,7 +12,6 @@ export default class KovaDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" as="style" />
           <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
         </Head>

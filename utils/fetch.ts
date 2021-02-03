@@ -21,8 +21,8 @@ export type FetchOptions = AxiosRequestConfig & {
 }
 
 export const service = axios.create({
-  // baseURL: 'https://api.i.loyep.com',
-  baseURL: 'http://dev.loyep.com:3001',
+  baseURL: 'https://aiecho.cn',
+  // baseURL: 'http://dev.loyep.com:3001',
   withCredentials: true,
   timeout: 10000,
 })

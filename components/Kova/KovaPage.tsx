@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { FC, HTMLAttributes, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 // interface PageProps {
 //   title?: string

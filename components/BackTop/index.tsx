@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { BackTop as ABackTop } from 'antd'
 import { CaretUpOutlined } from '@ant-design/icons'
-import './BackTop.less'
+import './index.less'
 
 type BackTopProps = {
   title?: string

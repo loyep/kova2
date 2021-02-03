@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import type { LinkProps as NextLinkProps } from 'next/link'
-import React, { FC, cloneElement, useMemo, AnchorHTMLAttributes } from 'react'
+import React, { FC, useMemo, AnchorHTMLAttributes } from 'react'
 import cls from 'classnames'
 
 export { NextLink }
@@ -21,6 +21,7 @@ export const Link: FC<LinkProps> = ({
   prefetch,
   className,
   activeClassName,
+  children,
   ...rest
 }) => {
   const router = useRouter()
@@ -31,6 +32,8 @@ export const Link: FC<LinkProps> = ({
       className: cls(className, active ? 'active' : '') || undefined,
     }
   }, [rest])
+
+  console.log(children)
 
   return (
     <NextLink

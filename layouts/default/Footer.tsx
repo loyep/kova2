@@ -88,8 +88,8 @@ const Footer: FC<FooterProps> = (props) => {
 
   const footerLinks = useMemo(() => {
     return links && links.length
-      ? links.map((link) => (
-          <a href={link.url} target={link.target} rel={link.rel}>
+      ? links.map((link, index) => (
+          <a key={index} href={link.url} target={link.target} rel={link.rel}>
             {link.title}
           </a>
         ))
@@ -109,7 +109,7 @@ const Footer: FC<FooterProps> = (props) => {
         </a>
         .
         <a href="http://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
-          京ICP备12345678号
+          鲁ICP备20027500号
         </a>
       </div>
     )
