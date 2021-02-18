@@ -136,7 +136,7 @@ const AdminUsers: KovaPage<AdminUsersProps> = (props) => {
         rowKey="id"
         onChange={onChange}
         loading={loading}
-        pagination={{ position: ['bottomRight'], ...pagination }}
+        pagination={{ size: 'default', position: ['bottomRight'], ...pagination }}
       />
     </AdminLayout>
   )

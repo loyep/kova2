@@ -66,7 +66,7 @@ const AdminTags: KovaPage<AdminTagsProps> = (props) => {
         columns={columns}
         rowKey="id"
         loading={loading}
-        pagination={{ position: ['bottomRight'], ...pagination }}
+        pagination={{ size: 'default', position: ['bottomRight'], ...pagination }}
       />
     </AdminLayout>
   )
