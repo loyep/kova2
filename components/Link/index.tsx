@@ -33,8 +33,6 @@ export const Link: FC<LinkProps> = ({
     }
   }, [rest])
 
-  console.log(children)
-
   return (
     <NextLink
       href={href}

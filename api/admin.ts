@@ -1,7 +1,6 @@
-import type { IncomingMessage } from 'http'
 import fetch from '@/utils/fetch'
 
-const apiPrefix = '/api/v1'
+const apiPrefix = '/api/v1/admin'
 
 export const fetchArticles = (params: any = {}) =>
   fetch({
@@ -13,8 +12,61 @@ export const fetchArticles = (params: any = {}) =>
 export const fetchCategories = (params: any = {}) =>
   fetch({
     method: 'get',
-    url: '/api/v1/articles',
+    url: `${apiPrefix}/category`,
     params,
+  })
+
+export const fetchTags = (params: any = {}) =>
+  fetch({
+    method: 'get',
+    url: `${apiPrefix}/tag`,
+    params,
+  })
+
+export const fetchUsers = (params: any = {}) =>
+  fetch({
+    method: 'get',
+    url: `${apiPrefix}/user`,
+    params,
+  })
+
+export const getUserById = (id: number | string) =>
+  fetch({
+    method: 'get',
+    url: `${apiPrefix}/user/${id}`,
+  })
+
+export const getCategoryById = (id: number | string) =>
+  fetch({
+    method: 'get',
+    url: `${apiPrefix}/category/${id}`,
+  })
+
+export const getTagById = (id: number | string) =>
+  fetch({
+    method: 'get',
+    url: `${apiPrefix}/tag/${id}`,
+  })
+
+export const updateUser = (id: number | string, data: any = {}) =>
+  fetch({
+    method: 'put',
+    url: `${apiPrefix}/user/${id}`,
+    data,
+  })
+
+export const updateTag = (id: number | string, data: any = {}) =>
+  fetch({
+    method: 'put',
+    url: `${apiPrefix}/tag/${id}`,
+    data,
+  })
+
+export const updateCategory = (id: number | string, data: any = {}) =>
+  fetch({
+    method: 'put',
+    url: `${apiPrefix}/category/${id}`,
+    data,
   })
 
 export const fetchArticle = (data: any) => {
@@ -97,15 +149,6 @@ export const profile = () =>
   fetch({
     method: 'get',
     url: `${apiPrefix}/profile`,
-  })
-
-export const curUser = (req: IncomingMessage) =>
-  fetch({
-    method: 'get',
-    url: `${apiPrefix}/curUser`,
-    headers: {
-      // cookie: req.headers?.cookie || '',
-    },
   })
 
 export const getArticleByUserId = (userId: number | string) =>

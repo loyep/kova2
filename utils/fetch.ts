@@ -22,7 +22,7 @@ export type FetchOptions = AxiosRequestConfig & {
 
 export const service = axios.create({
   baseURL: 'https://aiecho.cn',
-  // baseURL: 'http://dev.loyep.com:3001',
+  // baseURL: 'http://127.0.0.1:3001',
   withCredentials: true,
   timeout: 10000,
 })
@@ -35,6 +35,7 @@ service.interceptors.request.use(
 export default function fetch(options: FetchOptions): Promise<any> {
   return new Promise((resolve, reject) => {
     const reqConf = options
+    console.log(options)
     reqConf.method = (reqConf.method || 'GET').toUpperCase() as Method
     service(reqConf)
       .then((response) => {
@@ -51,6 +52,7 @@ export default function fetch(options: FetchOptions): Promise<any> {
         })
       })
       .catch((error) => {
+        console.log(error)
         // if (typeof window !== 'undefined') {
         //   AntMessage.info(error || 'Network Error')
         // }

@@ -23,7 +23,7 @@ const Avatar: FC<AvatarProps> = (props: AvatarProps) => {
     router.push({
       pathname: '/login',
       query: {
-        next: router.asPath,
+        redirect: encodeURIComponent(location.href),
       },
     })
   }

@@ -5,8 +5,7 @@ import Progress from '@/components/Progress'
 import { generateTitle } from '@/utils'
 import type { KovaPage } from '@/components/Kova'
 import { wrapper } from '@/store'
-import { Fragment } from 'react'
-import { checkAuth } from '@/lib/auth'
+// import { checkAuth } from '@/lib/auth'
 import zhCN from 'antd/lib/locale/zh_CN'
 import { ConfigProvider } from 'antd'
 import '@/styles/index.less'
@@ -19,8 +18,8 @@ type KovaAppContext = AppContext
 
 class KovaApp extends App<KovaAppProps> {
   static getInitialProps = async ({ Component, ctx }: KovaAppContext) => {
-    const { req } = ctx
-    if (req) await checkAuth(req)
+    // const { req } = ctx
+    // if (req) await checkAuth(req)
 
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
@@ -34,9 +33,6 @@ class KovaApp extends App<KovaAppProps> {
   render() {
     const { pageProps, Component } = this.props
     const { title, description } = pageProps
-    const Layout = Component.layoutProps?.Layout || Fragment
-    const layoutProps = Component.layoutProps?.Layout ? { layoutProps: Component.layoutProps } : {}
-    // const meta = Component.layoutProps?.meta || {}
 
     return (
       <>
@@ -46,9 +42,7 @@ class KovaApp extends App<KovaAppProps> {
           {description && <meta name="description" content={description} />}
         </Head>
         <ConfigProvider locale={zhCN}>
-          <Layout {...layoutProps}>
-            <Component {...pageProps} />
-          </Layout>
+          <Component {...pageProps} />
           <Progress />
         </ConfigProvider>
       </>

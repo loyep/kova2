@@ -2,7 +2,7 @@
 const fs = require("fs")
 const path = require("path")
 const lessToJS = require("less-vars-to-js")
-const withAntd = require("./build/with-antd")
+const withAntd = require("./scripts/with-antd")
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 })
@@ -18,14 +18,7 @@ module.exports = withBundleAnalyzer(
       camelCase: true,
       localIdentName: "[local]_[hash:4]",
     },
-    webpack: (config, {
-      buildId,
-      dev,
-      isServer,
-      defaultLoaders
-    }) => {
-      return config
-    },
+    // webpack: config => config,
     lessLoaderOptions: {
       lessOptions: {
         javascriptEnabled: true,
