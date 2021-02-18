@@ -16,7 +16,7 @@ const columns = [
     title: '分类名',
     key: 'id',
     render: (text: string, record: any) => (
-      <Link href={`/admin/category/${record.slug}`}>{record.name}</Link>
+      <Link href={`/admin/category/${record.id}`}>{record.name}</Link>
     ),
   },
   {
