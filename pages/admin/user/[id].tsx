@@ -1,11 +1,10 @@
 import { KovaPage } from '@/components/Kova'
 import AdminLayout from '@/layouts/admin'
-// import { GetServerSideProps } from 'next'
 import { getUserById, updateUser } from '@/api/admin'
-
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import ClientOnly from '@/components/Kova/ClientOnly'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 
 interface AdminUserProps {
   data: {
@@ -21,10 +20,15 @@ interface AdminUserProps {
 }
 
 const AdminUser: KovaPage<AdminUserProps> = (props) => {
+  const router = useRouter()
+
   const onFinish = async (values: any) => {
     console.log('Success:', values)
     const res = await updateUser(props.data.id, values)
     console.log(res)
+
+    message.success('更新分类成功')
+    router.replace('/admin/user', '/admin/user')
   }
 
   return (

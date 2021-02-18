@@ -25,7 +25,7 @@ const AdminTag: KovaPage<AdminUserProps> = (props) => {
     const res = await updateTag(props.data.id, values)
     console.log(res)
     message.success('更新标签成功')
-    router.back()
+    router.replace('/admin/tag', '/admin/tag')
   }
 
   return (
