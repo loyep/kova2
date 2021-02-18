@@ -2,9 +2,10 @@ import { KovaPage } from '@/components/Kova'
 import AdminLayout from '@/layouts/admin'
 import { getTagById, updateTag } from '@/api/admin'
 
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import ClientOnly from '@/components/Kova/ClientOnly'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 
 interface AdminUserProps {
   data: {
@@ -18,10 +19,13 @@ interface AdminUserProps {
 }
 
 const AdminTag: KovaPage<AdminUserProps> = (props) => {
+  const router = useRouter()
   const onFinish = async (values: any) => {
     console.log('Success:', values)
     const res = await updateTag(props.data.id, values)
     console.log(res)
+    message.success('更新标签成功')
+    router.back()
   }
 
   return (
@@ -35,18 +39,18 @@ const AdminTag: KovaPage<AdminUserProps> = (props) => {
           onFinish={onFinish}
         >
           <Form.Item
-            label="分类名"
+            label="标签名"
             name="name"
-            rules={[{ required: true, message: '必须填写分类名称' }]}
+            rules={[{ required: true, message: '必须填写标签名称' }]}
           >
             <Input allowClear />
           </Form.Item>
 
-          <Form.Item label="分类缩略名" name="slug">
+          <Form.Item label="标签缩略名" name="slug">
             <Input allowClear />
           </Form.Item>
 
-          <Form.Item label="分类描述" name="description">
+          <Form.Item label="标签描述" name="description">
             <Input.TextArea allowClear />
           </Form.Item>
 
