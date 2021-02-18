@@ -38,7 +38,7 @@ const columns = [
     dataIndex: 'name',
     render: (text: string, record: any) => (
       <>
-        <Link href={`/admin/user/${record.name}`}>{record.name}</Link>
+        <Link href={`/admin/user/${record.id}`}>{record.name}</Link>
         <Link href={`/user/${record.name}`} as={`/user/${record.name}`}>
           <a target="_blank" style={{ color: '#999', marginLeft: '4px' }}>
             <LinkOutlined />
