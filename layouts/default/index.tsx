@@ -1,26 +1,25 @@
 import { FC } from 'react'
-import { Layout } from 'antd'
 import BackTop from '@/components/BackTop'
 import Header from './Header'
 import Footer from './Footer'
-import { GetLayoutResultProps } from '../types'
+import BaseLayout, { BaseLayoutProps } from '../BaseLayout'
 import cls from 'classnames'
 import style from './default.less'
 
-export interface DefaultLayoutProps extends GetLayoutResultProps {
+export interface DefaultLayoutProps extends BaseLayoutProps {
   theme?: string
 }
 
 const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
-  const { children } = props
+  const { children, title } = props
 
   return (
-    <Layout className={cls(style.layout, props.className)}>
+    <BaseLayout title={title} className={cls(style.layout, props.className)}>
       <Header />
       {children}
       <Footer />
       <BackTop />
-    </Layout>
+    </BaseLayout>
   )
 }
 

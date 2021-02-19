@@ -1,28 +1,28 @@
 import { FC } from 'react'
 import BackTop from '@/components/BackTop'
-import Header from './Header'
-import Footer from './Footer'
+import Footer from '../default/Footer'
 import cls from 'classnames'
-import style from './default.less'
+import style from '../default/default.less'
 import BaseLayout, { BaseLayoutProps } from '../BaseLayout'
 
-export interface AdminLayoutProps extends BaseLayoutProps {
+export interface BlogLayoutProps extends BaseLayoutProps {
   theme?: string
 }
 
-const AdminLayout: FC<AdminLayoutProps> = (props) => {
+const AuthLayout: FC<BlogLayoutProps> = (props) => {
   const { children, title } = props
 
   return (
     <BaseLayout title={title} className={cls(style.layout, props.className)}>
-      <Header />
-      <div className={style.content}>{children}</div>
+      <div className={cls(style.content)}>{children}</div>
       <Footer />
       <BackTop />
     </BaseLayout>
   )
 }
 
-AdminLayout.defaultProps = {}
+AuthLayout.defaultProps = {}
 
-export default AdminLayout
+export { AuthLayout }
+
+export default AuthLayout

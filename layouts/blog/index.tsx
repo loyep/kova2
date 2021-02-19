@@ -1,26 +1,25 @@
 import { FC } from 'react'
-import { Layout } from 'antd'
 import BackTop from '@/components/BackTop'
 import Header from '../default/Header'
 import Footer from '../default/Footer'
-import { GetLayoutResultProps } from '../types'
 import cls from 'classnames'
+import BaseLayout, { BaseLayoutProps } from '../BaseLayout'
 import style from '../default/default.less'
 
-export interface BlogLayoutProps extends GetLayoutResultProps {
+export interface BlogLayoutProps extends BaseLayoutProps {
   theme?: string
 }
 
 const BlogLayout: FC<BlogLayoutProps> = (props) => {
-  const { children } = props
+  const { children, title } = props
 
   return (
-    <Layout className={cls(style.layout, props.className)}>
+    <BaseLayout title={title} className={cls(style.layout, props.className)}>
       <Header />
       <div className={cls(style.content)}>{children}</div>
       <Footer />
       <BackTop />
-    </Layout>
+    </BaseLayout>
   )
 }
 
