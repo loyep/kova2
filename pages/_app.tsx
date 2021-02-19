@@ -1,8 +1,8 @@
 import App from 'next/app'
 import type { AppContext, AppInitialProps, AppProps } from 'next/app'
-import Head from 'next/head'
+// import Head from 'next/head'
 import Progress from '@/components/Progress'
-import { generateTitle } from '@/utils'
+// import { generateTitle } from '@/utils'
 import type { KovaPage } from '@/components/Kova'
 import { wrapper } from '@/store'
 // import { checkAuth } from '@/lib/auth'
@@ -32,15 +32,15 @@ class KovaApp extends App<KovaAppProps> {
 
   render() {
     const { pageProps, Component } = this.props
-    const { title, description } = pageProps
+    // const { description } = pageProps
 
     return (
       <>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>{generateTitle(title)}</title>
-          {description && <meta name="description" content={description} />}
-        </Head>
+        {/* <Head> */}
+        {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
+        {/* <title>{generateTitle(title)}</title> */}
+        {/* {description && <meta name="description" content={description} />} */}
+        {/* </Head> */}
         <ConfigProvider locale={zhCN}>
           <Component {...pageProps} />
           <Progress />

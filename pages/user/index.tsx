@@ -1,16 +1,16 @@
-import Link from 'next/link'
+import { KovaPage } from '@/components/Kova'
 import BlogLayout from '@/layouts/blog'
 
-const IndexPage = () => (
-  <BlogLayout>
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-    {/* </Layout> */}
-  </BlogLayout>
-)
+interface UsersPageProps {
+  data?: any
+}
 
-export default IndexPage
+const UsersPage: KovaPage<UsersPageProps> = (props) => {
+  return (
+    <BlogLayout>
+      <h1>文章</h1>
+    </BlogLayout>
+  )
+}
+
+export default UsersPage

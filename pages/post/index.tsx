@@ -1,6 +1,11 @@
+import { KovaPage } from '@/components/Kova'
 import BlogLayout from '@/layouts/blog'
 
-const PostsPage = () => {
+interface PostsPageProps {
+  data?: any
+}
+
+const PostsPage: KovaPage<PostsPageProps> = (props) => {
   return (
     <BlogLayout>
       <h1>文章</h1>

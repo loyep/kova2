@@ -3,11 +3,11 @@ import Link from 'next/link'
 import AuthLayout from '@/layouts/auth'
 import { KovaPage } from '@/components/Kova'
 
-interface LoginPageProps {
+interface RegisterPageProps {
   redirect?: string
 }
 
-const LoginPage: KovaPage<LoginPageProps> = (Props) => {
+const RegisterPage: KovaPage<RegisterPageProps> = (Props) => {
   return (
     <AuthLayout>
       <h1>Users List</h1>
@@ -24,4 +24,4 @@ const LoginPage: KovaPage<LoginPageProps> = (Props) => {
   )
 }
 
-export default LoginPage
+export default RegisterPage

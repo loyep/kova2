@@ -1,6 +1,11 @@
+import { KovaPage } from '@/components/Kova'
 import BlogLayout from '@/layouts/blog'
 
-const PostsPage = () => {
+interface TagsPageProps {
+  data?: any
+}
+
+const TagsPage: KovaPage<TagsPageProps> = (props) => {
   return (
     <BlogLayout>
       <h1>文章</h1>
@@ -8,4 +13,4 @@ const PostsPage = () => {
   )
 }
 
-export default PostsPage
+export default TagsPage

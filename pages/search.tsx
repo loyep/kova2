@@ -1,16 +1,16 @@
 import { KovaPage } from '@/components/Kova'
 import BlogLayout from '@/layouts/blog'
 
-interface TopicsPageProps {
+interface SearchPageProps {
   data?: any
 }
 
-const TopicsPage: KovaPage<TopicsPageProps> = (props) => {
+const SearchPage: KovaPage<SearchPageProps> = (props) => {
   return (
     <BlogLayout>
-      <h1>文章</h1>
+      <h1>搜索</h1>
     </BlogLayout>
   )
 }
 
-export default TopicsPage
+export default SearchPage

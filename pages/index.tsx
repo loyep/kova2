@@ -1,18 +1,16 @@
-import Link from 'next/link'
-// import Layout from '@/components/Layout'
+import { KovaPage } from '@/components/Kova'
 import BlogLayout from '@/layouts/blog'
 
-const IndexPage = () => (
-  <BlogLayout>
-    {/* <Layout title="Home | Next.js + TypeScript Example"> */}
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-    {/* </Layout> */}
-  </BlogLayout>
-)
+interface HomePageProps {
+  data?: any
+}
 
-export default IndexPage
+const HomePage: KovaPage<HomePageProps> = (props) => {
+  return (
+    <BlogLayout>
+      <h1>文章</h1>
+    </BlogLayout>
+  )
+}
+
+export default HomePage
