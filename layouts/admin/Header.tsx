@@ -104,40 +104,25 @@ const Header: FC<HeaderProps> = (props) => {
 Header.defaultProps = {
   menus: [
     {
-      title: '图片',
-      url: '/category/picture',
+      title: '分类',
+      url: '/admin/category',
     },
     {
-      title: '测试',
-      url: '/category/test001',
+      title: '标签',
+      url: '/admin/tag',
     },
     {
-      title: '游戏',
-      url: '/category/games',
+      title: '用户',
+      url: '/admin/user',
     },
     {
-      title: '视频',
-      url: '/category/videos',
+      title: '评论',
+      url: '/admin/comment',
     },
     {
-      title: '专题推荐',
-      url: '/topic',
+      title: '专题',
+      url: '/admin/topic',
     },
-    // <Menu.Item>
-    //           <Link href="/category/picture">图片</Link>
-    //         </Menu.Item>
-    //         <Menu.Item>
-    //           <Link href="/category/test001">测试</Link>
-    //         </Menu.Item>
-    //         <Menu.Item>
-    //           <Link href="/category/games">游戏</Link>
-    //         </Menu.Item>
-    //         <Menu.Item>
-    //           <Link href="/category/videos">视频</Link>
-    //         </Menu.Item>
-    //         <Menu.Item>
-    //           <Link href="/topic">专题推荐</Link>
-    //         </Menu.Item>
   ],
 }
 

@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Layout } from 'antd'
 import BackTop from '@/components/BackTop'
-import Header from '../default/Header'
+import Header from './Header'
 import Footer from './Footer'
 import { GetLayoutResultProps } from '../types'
 import cls from 'classnames'
-import style from '../default/default.less'
+import style from './default.less'
 
 export interface AdminLayoutProps extends GetLayoutResultProps {
   theme?: string
